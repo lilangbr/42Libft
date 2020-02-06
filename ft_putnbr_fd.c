@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 11:00:03 by ebresser          #+#    #+#             */
-/*   Updated: 2020/01/28 15:47:46 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:52:12 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,26 @@ static void		cut(int number, int out)
 
 void			ft_putnbr_fd(int n, int fd)
 {
-	cut(n, fd);
+	if (n != 0)
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			if (n == -2147483648)
+			{
+				n = (-1) * (n / 10);
+				cut(n, fd);
+				ft_putchar_fd('8', fd);
+			}
+			else
+			{
+				n = -n;
+				cut(n, fd);
+			}
+		}
+		else
+			cut(n, fd);
+	}
+	else
+		ft_putchar_fd('0', fd);
 }

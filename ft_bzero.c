@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 15:31:26 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/07 16:03:05 by ebresser         ###   ########.fr       */
+/*   Created: 2020/02/07 16:06:39 by ebresser          #+#    #+#             */
+/*   Updated: 2020/02/07 17:39:37 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_bzero(void *s, size_t n)
 {
-	if (dst == NULL || src == NULL)
-		return ((size_t)NULL);
-	if (ft_strlen(src) + 1 < dstsize)
-		ft_memcpy(dst, src, ft_strlen(src) + 1);
-	else if (dstsize != 0)
+	if (n)
 	{
-		ft_memcpy(dst, src, dstsize - 1);
-		dst[dstsize - 1] = '\0';
+		ft_memset(s, 0, n);
 	}
-	return (ft_strlen(src));
 }

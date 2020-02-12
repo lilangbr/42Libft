@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:07:41 by ebresser          #+#    #+#             */
-/*   Updated: 2020/01/28 15:42:52 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:15:47 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ void	ft_putendl_fd(char *s, int fd)
 	int i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (s)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
+		ft_putchar_fd('\n', fd);
 	}
-	ft_putchar_fd('\n', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:16:12 by ebresser          #+#    #+#             */
-/*   Updated: 2020/01/31 14:26:05 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:05:40 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	char	*s;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	s = (char*)malloc(len * sizeof(char));
 	if (s == NULL)

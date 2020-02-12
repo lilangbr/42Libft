@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 16:13:26 by ebresser          #+#    #+#             */
-/*   Updated: 2020/01/27 18:04:44 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:12:52 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void		ft_putstr_fd(char *s, int fd)
 	int i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (s)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }

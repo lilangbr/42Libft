@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 11:16:12 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/14 08:47:27 by ebresser         ###   ########.fr       */
+/*   Created: 2020/02/14 08:50:00 by ebresser          #+#    #+#             */
+/*   Updated: 2020/02/14 09:04:36 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	diff(const char *a, const char *b, int i)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char ua;
-	unsigned char ub;
+	unsigned char	*ps;
+	size_t			i;
 
-	ua = (unsigned char)a[i];
-	ub = (unsigned char)b[i];
-	return (ua - ub);
-}
-
-int			ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-	int		compare;
-
+	ps = (unsigned char *)s;
 	i = 0;
-	compare = 1;
-	while (compare)
+	while (i < n && i < ft_strlen(s) + 1)
 	{
-		if (i == n)
-			return (0);
-		else if (s1[i] == '\0' || s2[i] == '\0')
-			compare = 0;
-		else if (s1[i] != s2[i])
-			compare = 0;
+		if (ps[i] == (unsigned char)c)
+			return (ps + i);
 		else
 			i++;
 	}
-	return (diff(s1, s2, i));
+	return (NULL);
 }

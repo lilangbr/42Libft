@@ -6,98 +6,70 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/19 21:18:25 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:58:36 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- * Parameters 
- * #1. The string to be split.
- * #2. The delimiter character.
- * Return value 
- * The array of new strings resulting from the split.
- * NULL if the allocation fails.
- * External functs. 
- * malloc, free
- * Description 
- * Allocates (with malloc(3)) and returns an array
- * of strings obtained by splitting ’s’ using the
- * character ’c’ as a delimiter. The array must be
- * ended by a NULL pointer.
- */
-
 #include "libft.h"
+#include <stdio.h>
 
-//char	*marked(char const *s1, char m)
-//{
-//	char	*s2;
-	//char	sm[2];
-//	int	i;
-
-	//sm[0] = m;
-	//sm[1] = '\0';
-	//s2 = ft_strtrim(s1, sm);
-//	i = 0;
-//	while (s2[i] != '\0')
-//	{
-//		if (s2[i] == m)
-//			s2[i] = '\0';
-//		i++;
-//	}
-//	return (s2);
-//}
+static char	**fill(char **array, size_t len, char	*st, char cut)
+{
+	size_t	i;
+	size_t	j;
+	
+	i = 0;
+	if (!len)
+		return (NULL);
+	while (i++ < len - 1)
+	{
+		j = 0;
+		if (i == len - 2)
+			cut = '\0';
+		while (st[j++] != cut) 
+			//j++;
+		array[i] = (char *)malloc( (j + 1) *sizeof(char));
+		if (!array[i])
+			return (NULL);
+		ft_strlcpy(array[i], st, j + 1); 
+		st = st + j + 1; 
+		while (*st == cut)
+			st++;
+		//i++;
+		array[len - 1] = NULL;
+	}
+	return (array);
+}
 
 char	**ft_split(char const *s, char c)
 {
-	//char	*smarked;
-	//char	*ssmarked;
 	char	*ps;
 	char	sm[2];
 	char	**splited;
-	size_t	i;
-	size_t	j;
 	size_t	size;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
 	sm[0] = c;
 	sm[1] = '\0';
 	ps = ft_strtrim(s, sm);
-	//smarked = marked(s, c);
-	//ssmarked = smarked;
-	size = 0;
+	size = 2;
 	i = 0;
-	while (i < ft_strlen(ps) + 1)
+	while (ps[i])
 	{
-		//if (smarked[i] == '\0')
 		if (ps[i] == c)
+		{
+			while (ps[i + 1] == c)
+				i++;
 			size++;
+		}
 		i++;
 	}
-	size++; //o \0 final nao eh contado!
+		//i++;
 	splited = (char **)malloc(size * sizeof(char *));
 	if (!splited)
 		return (NULL);
-	i = 0;
-	while (i < size - 1)
-	{
-		j = 0;
-		while (ps[j] != c) //ssmarked
-			j++;
-		splited[i] = (char *)malloc( (j + 1) *sizeof(char));
-		if (!splited[i])
-			return (NULL);
-		ft_strlcpy(splited[i], ps, j + 1); //ssmarked
-		ps = ps + j + 1; //ssmarked
-		i++;
-	}
-	
-	j = 0;
-	while (ps[j] != '\0') //ssmarked
-		j++;
-	splited[i] = (char *)malloc( (j + 1) *sizeof(char));
-	if (!splited[i])
-		return (NULL);
-	ft_strlcpy(splited[i], ps, j + 1); //ssmarked
-	return (splited);
+	//funcao
+	return (fill(splited, size, ps, c));
 }

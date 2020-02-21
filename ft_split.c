@@ -6,12 +6,23 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/20 21:27:06 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:26:14 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void		free2D(char **array)
+{
+	size_t i;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
 static char	**fill(char **array, size_t len, char *st, char cut)
 {
 	size_t	i;
@@ -31,8 +42,11 @@ static char	**fill(char **array, size_t len, char *st, char cut)
 			j++;
 		array[i] = (char *)malloc( (j + 1) * sizeof(char));
 		if (!array[i])
+		{
+			free2D(array);
 			return (NULL);
-		ft_strlcpy(array[i], st, j + 1); //ver nulo
+		}
+		ft_strlcpy(array[i], st, j + 1); 
 		st = st + j; 
 		while (*st == cut)
 			st++;

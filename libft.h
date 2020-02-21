@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 17:51:07 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/19 17:34:23 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:33:39 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char	**ft_split(char const *s, char c);
 

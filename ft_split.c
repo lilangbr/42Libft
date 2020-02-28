@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/21 15:26:14 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/02/27 08:02:14 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	**fill(char **array, size_t len, char *st, char cut)
 			stop = '\0';
 		while (st[j] != stop) 
 			j++;
-		array[i] = (char *)malloc( (j + 1) * sizeof(char));
+		array[i] = (char *)ft_calloc( j + 1, (j + 1) * sizeof(char));
 		if (!array[i])
 		{
 			free2D(array);
@@ -84,7 +84,7 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	splited = (char **)malloc(size * sizeof(char *));
+	splited = (char **)ft_calloc(size, size * sizeof(char *));
 	if (!splited)
 		return (NULL);
 	if (*ps == '\0')

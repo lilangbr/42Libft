@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 14:48:15 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/03 17:26:58 by ebresser         ###   ########.fr       */
+/*   Created: 2020/03/03 17:13:46 by ebresser          #+#    #+#             */
+/*   Updated: 2020/03/03 17:26:34 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list				*ft_lstnew(void *content)
+int					ft_lstsize(t_list *lst)
 {
-	t_list *new;
+	t_list	*runner;
+	int		count;
 
-	new = malloc(sizeof(t_list));
-	if (new)
+	runner = lst;
+	count = 0;
+	while (runner)
 	{
-		new->content = content;
-		new->next = NULL;
+		count++;
+		runner = runner->next;
 	}
-	return (new);
+	return (count);
 }

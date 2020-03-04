@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 17:51:07 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/03 18:40:02 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/04 18:04:47 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
-void				ft_lstdelone(t_list *lst, void (*del)(void
-*));
+void				ft_lstdelone(t_list *lst, void (*del)(void*));
+void				ft_lstclear(t_list **lst, void (*del)(void*));
 
 #endif

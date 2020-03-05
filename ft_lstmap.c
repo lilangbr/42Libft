@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 15:24:47 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/05 15:18:44 by ebresser         ###   ########.fr       */
+/*   Created: 2020/03/05 17:29:53 by ebresser          #+#    #+#             */
+/*   Updated: 2020/03/05 18:04:46 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *))
 {
-	new->next = *lst;
-	*lst = new;
+	t_list *newlist;
+	t_list *oldlist;
+
+	oldlist = lst;
+	oldlist = f(oldlist->content);
+	newlist = ft_lstnew(oldlist->content);
+	oldlist = oldlist->next;
+	if (newlist)
+	{
+		while (oldlist)
+		{
+			t_list **p_newlist;
+
+			p_newlist = &oldlist;
+			ft_lstadd_back(p_newlist, oldlist);
+			oldlist = oldlist->new;
+		}
+	}
+	return (newlist);
 }
+
+
+

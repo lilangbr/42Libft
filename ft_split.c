@@ -6,15 +6,16 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/27 08:02:14 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/06 21:08:01 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		free2D(char **array)
+static void		freeall(char **array)
 {
 	size_t i;
+
 	i = 0;
 	while (array[i])
 	{
@@ -23,73 +24,86 @@ static void		free2D(char **array)
 	}
 	free(array);
 }
-static char	**fill(char **array, size_t len, char *st, char cut)
+
+static char		*bypass(char *s, char c)
+{
+	if (*s == c)
+	{
+		while (*(s + 1) == c)
+			s++;
+		return (s + 1);
+	}
+	else
+		return (s);
+}
+
+static char		**fill(char **array, size_t len, char *st, char cut)
 {
 	size_t	i;
-	size_t	j;
-	char	stop;
+	size_t	begin;
+	size_t	end;
 
 	i = 0;
-	if (len == 1)
-		array[0] = NULL;
+	begin = 0;
 	while (i < len - 1)
 	{
-		stop = cut;
-		j = 0;
-		if (i == len - 2)
-			stop = '\0';
-		while (st[j] != stop) 
-			j++;
-		array[i] = (char *)ft_calloc( j + 1, (j + 1) * sizeof(char));
-		if (!array[i])
+		while (st[begin] == cut)
+			begin++;
+		end = begin;
+		while (st[end] != cut && st[end] != '\0')
+			end++;
+		if (!(array[i] = (char *)malloc((end - begin + 1) * sizeof(char))))
 		{
-			free2D(array);
+			freeall(array);
 			return (NULL);
 		}
-		ft_strlcpy(array[i], st, j + 1); 
-		st = st + j; 
-		while (*st == cut)
-			st++;
+		ft_strlcpy(array[i], &st[begin], end - begin + 1);
+		begin = end;
 		i++;
 	}
 	array[len - 1] = NULL;
 	return (array);
 }
 
-char	**ft_split(char const *s, char c)
+static int		wcount(const char *s, char c)
 {
-	char	*ps;
-	char	sm[2];
-	char	**splited;
-	size_t	size;
-	size_t	i;
+	int		size;
+	char	*str;
 
-	if (!s)
-		return (NULL);
-	sm[0] = c;
-	sm[1] = '\0';
-	ps = ft_strtrim(s, sm);
-	if (ps)
-		size = 2;
-	else
-		size = 1;
-	i = 0;
-	while (ps[i])
+	str = (char*)s;
+	size = 0;
+	str = bypass(str, c);
+	while (*str)
 	{
-		if (ps[i] == c)
+		while (*str != c && *str != '\0')
+			str++;
+		if (*str == c)
 		{
-			while (ps[i + 1] == c)
-				i++;
+			str = bypass(str, c);
 			size++;
 		}
-		i++;
+		else if (*str == '\0')
+			size++;
 	}
-	splited = (char **)ft_calloc(size, size * sizeof(char *));
-	if (!splited)
+	return (size);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**splitted;
+	char	*str;
+	int		wc;
+
+	str = (char *)s;
+	if (!s)
 		return (NULL);
-	if (*ps == '\0')
-		splited[0] = NULL;
+	wc = wcount(s, c);
+	splitted = (char **)malloc((wc + 1) * sizeof(char *));
+	if (!splitted)
+		return (NULL);
+	if (*s == '\0')
+		splitted[0] = NULL;
 	else
-		splited = fill(splited, size, ps, c);
-	return (splited);
+		splitted = fill(splitted, wc + 1, str, c);
+	return (splitted);
 }

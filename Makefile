@@ -6,7 +6,7 @@
 #    By: ebresser <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 12:56:04 by ebresser          #+#    #+#              #
-#    Updated: 2020/02/06 08:58:49 by ebresser         ###   ########.fr        #
+#    Updated: 2020/03/03 17:05:36 by ebresser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,4 +26,4 @@ fclean: clean
 re: fclean all
 
 norm:
-	@norminette -R CheckForbiddenSourceHeader $(SRC)
+	@norminette -R CheckForbiddenSourceHeader $(SRC) libft.h

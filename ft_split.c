@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/06 21:08:01 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/09 15:39:21 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ char			**ft_split(char const *s, char c)
 	char	*str;
 	int		wc;
 
-	str = (char *)s;
-	if (!s)
+	if (!s || !c)
 		return (NULL);
+	str = (char *)s;
 	wc = wcount(s, c);
 	splitted = (char **)malloc((wc + 1) * sizeof(char *));
 	if (!splitted)

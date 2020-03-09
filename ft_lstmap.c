@@ -5,35 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 17:29:53 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/05 18:04:46 by ebresser         ###   ########.fr       */
+/*   Created: 2020/03/09 10:17:27 by ebresser          #+#    #+#             */
+/*   Updated: 2020/03/09 10:17:35 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *newlist;
-	t_list *oldlist;
+	t_list *map;
 
-	oldlist = lst;
-	oldlist = f(oldlist->content);
-	newlist = ft_lstnew(oldlist->content);
-	oldlist = oldlist->next;
-	if (newlist)
+	if (!lst)
+		return (NULL);
+	else
 	{
-		while (oldlist)
+		if (!(map = ft_lstnew(f(lst->content))))
 		{
-			t_list **p_newlist;
-
-			p_newlist = &oldlist;
-			ft_lstadd_back(p_newlist, oldlist);
-			oldlist = oldlist->new;
+			ft_lstclear(&map, del);
+			return (NULL);
 		}
+		map->next = ft_lstmap(lst->next, f, del);
+		return (map);
 	}
-	return (newlist);
 }
-
-
-

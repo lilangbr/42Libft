@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 12:50:55 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/19 21:42:16 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/09 13:01:40 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		*ft_strtrim(char const *s1, char const *set)
 	char	*s2;
 	int		len;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
 	pb = finder(s1, set, 1);
 	pe = finder(s1, set, 0);

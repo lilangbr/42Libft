@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/09 15:39:21 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/10 16:57:23 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static int		wcount(const char *s, char c)
 	int		size;
 	char	*str;
 
-	str = (char*)s;
 	size = 0;
+	str = (char*)s;
 	str = bypass(str, c);
 	while (*str)
 	{
@@ -94,8 +94,16 @@ char			**ft_split(char const *s, char c)
 	char	*str;
 	int		wc;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
+	if (c == '\0')
+	{
+		wc = 1;
+		splitted = (char **)malloc((wc + 1) * sizeof(char *));
+		splitted[0] = ft_strdup(s);
+		splitted[1] = NULL;
+		return (splitted);
+	}
 	str = (char *)s;
 	wc = wcount(s, c);
 	splitted = (char **)malloc((wc + 1) * sizeof(char *));

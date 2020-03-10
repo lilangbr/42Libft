@@ -6,16 +6,28 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:16:12 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/12 18:05:40 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:18:13 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	copylen(char *scpy, const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		scpy[i] = s[i];
+		i++;
+	}
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
-	size_t	i;
+	size_t	k;
 	char	*s;
 
 	if (!s1 || !s2)
@@ -24,18 +36,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s = (char*)malloc(len * sizeof(char));
 	if (s == NULL)
 		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s[i + ft_strlen(s1)] = s2[i];
-		i++;
-	}
-	s[i + ft_strlen(s1)] = '\0';
+	copylen(s, s1);
+	k = ft_strlen(s1);
+	copylen(&s[k], s2);
+	k = k + ft_strlen(s2);
+	s[k] = '\0';
 	return (s);
 }

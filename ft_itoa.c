@@ -6,11 +6,11 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 08:57:53 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/05 19:40:33 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:16:45 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int			number_of_digits(int n)
 {

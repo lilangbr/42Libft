@@ -12,15 +12,12 @@
 
 #include "libft.h"
 
-static void		freeall(char **array)
+static void		freeall(char **array, int i)
 {
-	size_t i;
-
-	i = 0;
-	while (array[i])
+	while (i > -1)
 	{
 		free(array[i]);
-		i++;
+		i--;
 	}
 	free(array);
 }
@@ -52,9 +49,12 @@ static char		**fill(char **array, size_t len, char *st, char cut)
 		end = begin;
 		while (st[end] != cut && st[end] != '\0')
 			end++;
+		/*
+		* Destructor: Error- Memory leak in allocation. In next line
+		*/
 		if (!(array[i] = (char *)malloc((end - begin + 1) * sizeof(char))))
 		{
-			freeall(array);
+			freeall(array, i - 1);
 			return (NULL);
 		}
 		ft_strlcpy(array[i], &st[begin], end - begin + 1);
@@ -99,15 +99,18 @@ char			**ft_split(char const *s, char c)
 	if (c == '\0')
 	{
 		wc = 1;
-		splitted = (char **)malloc((wc + 1) * sizeof(char *));
+		if (!(splitted = (char **)malloc((wc + 1) * sizeof(char *))))
+			return (NULL);
 		splitted[0] = ft_strdup(s);
 		splitted[1] = NULL;
 		return (splitted);
 	}
 	str = (char *)s;
 	wc = wcount(s, c);
-	splitted = (char **)malloc((wc + 1) * sizeof(char *));
-	if (!splitted)
+	/*
+	* Destructor: Error- Memory leak in allocation. In next line
+	*/
+	if (!(splitted = (char **)malloc((wc + 1) * sizeof(char *))))
 		return (NULL);
 	if (*s == '\0')
 		splitted[0] = NULL;

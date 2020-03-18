@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 15:31:26 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/07 16:03:05 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:45:53 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	if (dst == NULL || src == NULL)
-		return ((size_t)NULL);
-	if (ft_strlen(src) + 1 < dstsize)
-		ft_memcpy(dst, src, ft_strlen(src) + 1);
-	else if (dstsize != 0)
+	size_t i;
+
+	if (!src)
+		return (0);
+	i = -1;
+	if (dstsize)
 	{
-		ft_memcpy(dst, src, dstsize - 1);
-		dst[dstsize - 1] = '\0';
+		while (src[++i] && i < dstsize - 1)
+			dst[i] = src[i];
+		dst[i] = '\0';
 	}
 	return (ft_strlen(src));
 }

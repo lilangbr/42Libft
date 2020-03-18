@@ -6,58 +6,69 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 12:50:55 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/10 15:59:49 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/13 12:23:48 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*finder(const char *s, const char *set, int begin)
+static int		isin(char c, char const *set)
 {
-	char		*p;
-	const char	*aux;
-	size_t		stop;
-
-	stop = ft_strlen(s);
-	p = (char *)s;
-	if (!begin)
-		p = p + stop - 1;
-	aux = set;
-	while (stop-- > 0)
-	{
-		set = aux;
-		while (*set)
-		{
-			if (*set == *p)
-			{
-				if (begin)
-					p++;
-				else
-					p--;
-			}
-			set++;
-		}
-	}
-	return (p);
+	if (!*set)
+		return (0);
+	else if (c == *set)
+		return (1);
+	else
+		return (isin(c, ++set));
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+static int		marker(const char *s, const char *set, int begin)
 {
-	char	*pb;
-	char	*pe;
+	int			i;
+	size_t		go;
+	int			iter;
+	size_t		s_len;
+
+	s_len = ft_strlen(s);
+	i = 0;
+	iter = 1;
+	go = 1;
+	if (!begin)
+	{
+		i = s_len - 1;
+		iter = -1;
+	}
+	while (s_len && go)
+	{
+		if (isin(s[i], set) && s[i] != '\0' && i > -1)
+		{
+			i = i + iter;
+			s_len--;
+		}
+		else
+			go = 0;
+	}
+	return (i);
+}
+
+char			*ft_strtrim(char const *s1, char const *set)
+{
+	int		b;
+	int		e;
 	char	*s2;
+	char	*s;
 	int		len;
 
 	if (!s1 || !set)
 		return (NULL);
-	pb = finder(s1, set, 1);
-	pe = finder(s1, set, 0);
-	len = pe - pb + 1;
-	if (pb > pe)
+	s = (char*)s1;
+	b = marker(s1, set, 1);
+	e = marker(s1, set, 0);
+	len = e - b + 1;
+	if (b > e)
 		len = 0;
-	s2 = (char *)malloc((len + 1) * sizeof(char));
-	if (!s2)
+	if (!(s2 = (char *)malloc((len + 1) * sizeof(char))))
 		return (NULL);
-	ft_strlcpy(s2, pb, len + 1);
+	ft_strlcpy(s2, &s[b], len + 1);
 	return (s2);
 }

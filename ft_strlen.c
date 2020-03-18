@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 14:59:04 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/09 15:42:25 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:36:58 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int len;
-	int i;
-
-	len = 0;
-	i = 0;
-	if (s[i] == '\0')
+	if (!*s)
 		return (0);
-	while (s[i] != '\0')
-	{
-		len++;
-		i++;
-	}
-	return (len);
+	return (ft_strlen(++s) + 1);
 }

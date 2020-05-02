@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:02:23 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/13 16:01:38 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/04/29 17:02:25 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static char		**fill(char **splitted, size_t size, const char *s, char c)
 			freeall(splitted, i - 1);
 			return (NULL);
 		}
-        ft_strlcpy(splitted[i], &s[begin], end - begin + 1);
-        begin = end;
-        i++;
+		ft_strlcpy(splitted[i], &s[begin], end - begin + 1);
+		begin = end;
+		i++;
 	}
 	splitted[size - 1] = NULL;
 	return (splitted);
@@ -67,29 +67,22 @@ static int		wcount(const char *s, char c)
 	int		wc;
 	char	*str;
 
-	if (*s == '\0')
-        return (0);
-    else if (c == '\0')
-        return (1);
-    else
-    {
-        wc = 0;
-        str = (char*)s;
-        str = bypass(str, c);
-        while (*str)
-        {
-		    while (*str != c && *str != '\0')
-			    str++;
-	    	if (*str == c)
-	    	{
-		    	str = bypass(str, c);
-			    wc++;
-    		}
-	    	else if (*str == '\0')
-		    	wc++;
-    	}
-	    return (wc);
-    }
+	wc = 0;
+	str = (char*)s;
+	str = bypass(str, c);
+	while (*str)
+	{
+		while (*str != c && *str != '\0')
+			str++;
+		if (*str == c)
+		{
+			str = bypass(str, c);
+			wc++;
+		}
+		else if (*str == '\0')
+			wc++;
+	}
+	return (wc);
 }
 
 char			**ft_split(char const *s, char c)
@@ -99,16 +92,21 @@ char			**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-    wc = wcount(s, c);
-    if (!(splitted = (char **)malloc((wc + 1) * sizeof(char *))))
+	if (*s == '\0')
+		wc = 0;
+	else if (c == '\0')
+		wc = 1;
+	else
+		wc = wcount(s, c);
+	if (!(splitted = (char **)malloc((wc + 1) * sizeof(char *))))
 		return (NULL);
-    if (*s == '\0')
-	    splitted[0] = NULL;
-    else if (c == '\0')
-    {
-            splitted[0] = ft_strdup(s);
-		    splitted[1] = NULL;
-    }
+	if (*s == '\0')
+		splitted[0] = NULL;
+	else if (c == '\0')
+	{
+		splitted[0] = ft_strdup(s);
+		splitted[1] = NULL;
+	}
 	else
 		splitted = fill(splitted, wc + 1, s, c);
 	return (splitted);

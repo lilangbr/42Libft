@@ -6,7 +6,7 @@
 /*   By: ebresser <ebresser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 12:50:55 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/13 12:23:48 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/04/29 00:16:00 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		marker(const char *s, const char *set, int begin)
 			s_len--;
 		}
 		else
-			break;
+			break ;
 	}
 	return (i);
 }
@@ -60,7 +60,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	b = marker(s1, set, 1);
 	e = marker(s1, set, 0) + 1;
 	if (b > e)
-        b = e;
+		b = e;
 	if (!(s2 = (char *)malloc((e - b + 1) * sizeof(char))))
 		return (NULL);
 	ft_strlcpy(s2, &s1[b], e - b + 1);

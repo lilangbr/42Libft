@@ -6,18 +6,18 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 17:51:07 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/09 10:19:52 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/04/29 00:16:24 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
+# define LIBFT_H
 
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <unistd.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <string.h>
+# include <ctype.h>
+# include <unistd.h>
 
 typedef struct		s_list
 {

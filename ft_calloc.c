@@ -6,7 +6,7 @@
 /*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 09:37:43 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/11 14:54:16 by ebresser         ###   ########.fr       */
+/*   Updated: 2020/05/03 18:26:22 by ebresser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char *ptr;
+	void *ptr;
 
 	if (count == 0 || size == 0)
 	{
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t count, size_t size)
 		size = 1;
 	}
 	if (!(ptr = malloc(count * size)))
-        return (NULL);
+		return (NULL);
 	ft_bzero(ptr, (count * size));
 	return (ptr);
 }

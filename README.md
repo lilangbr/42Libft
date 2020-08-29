@@ -28,7 +28,7 @@ Bellow, some function's flowcharts  to understand how they are working. This was
 
 <h1>Part 2 - Additional Functions</h1>
 
-<b>ft_substr</b>
+<h2>ft_substr</h2>
 
 ![substr](imgs/substr.png)
 

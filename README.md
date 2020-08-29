@@ -17,9 +17,9 @@ Bellow, some function's flowcharts  to understand how they are working. This was
 
 <b>ft_memmov</b>
 
-![memmov](imgs/memmov.png)
+![memmove](imgs/memmove.png)
 
-![memmov2](imgs/memmov2.png)
+![memmove2](imgs/memmove2.png)
 
 <b>ft_calloc</b>
 

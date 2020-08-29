@@ -56,7 +56,7 @@ Bellow, some function's flowcharts  to understand how they are working. This was
 
 ![itoa](imgs/itoa.png)
 
-![itoa2](imgs/toa2.png)
+![itoa2](imgs/itoa2.png)
 
 <b>ft_strmapi</b>
 

@@ -8,25 +8,25 @@ Others are'nt in the C library but it will be so usefull further. This functions
 
 Bellow, some function's flowcharts  to understand how they are working. This was important when i thinked about their logic.
 
-<h2>Part 1 - Libc Functions</h2>
+<h1>Part 1 - Libc Functions</h1>
 
-<b>ft_memset</b>
+<h2>ft_memset</h2>
 
 ![memset](imgs/memset.png)
 
 
-<b>ft_memmov</b>
+<h2>ft_memmov</h2>
 
 ![memmove](imgs/memmove.png)
 
 ![memmove2](imgs/memmove2.png)
 
-<b>ft_calloc</b>
+<h2>ft_calloc</h2>
 
 ![calloc](imgs/calloc.png)
 
 
-<h2>Part 2 - Additional Functions</h2>
+<h1>Part 2 - Additional Functions</h1>
 
 <b>ft_substr</b>
 
@@ -34,17 +34,17 @@ Bellow, some function's flowcharts  to understand how they are working. This was
 
 ![substr2](imgs/substr2.png)
 
-<b>ft_strjoin</b>
+<h2>ft_strjoin</h2>
 
 ![strjoin](imgs/strjoin.png)
 
 ![strjoin2](imgs/strjoin2.png)
 
-<b>ft_strtrim</b>
+<h2>ft_strtrim</h2>
 
 ![strtrim](imgs/strtrim.png)
 
-<b>ft_split</b>
+<h2>ft_split</h2>
 
 ![split](imgs/split.png)
 
@@ -52,13 +52,13 @@ Bellow, some function's flowcharts  to understand how they are working. This was
 
 ![split2](imgs/split2.png)
 
-<b>ft_itoa</b>
+<h2>ft_itoa</h2>
 
 ![itoa](imgs/itoa.png)
 
 ![itoa2](imgs/itoa2.png)
 
-<b>ft_strmapi</b>
+<h2>ft_strmapi</h2>
 
 ![strmapi](imgs/strmapi.png)
 

@@ -8,19 +8,59 @@ Others are'nt in the C library but it will be so usefull further. This functions
 
 Bellow, some function's flowcharts  to understand how they are working. This was important when i thinked about their logic.
 
-- <h2>memset</h2>
+<h2>Part 1 - Libc Functions</h2>
 
-Fill a byte string with a byte value.
+<b>ft_memset</b>
 
-<b>Header:</b> #include <string.h>
+![memset](imgs/memset.png)
 
-<b>Prototype:</b> void *memset(void *b, int c, size_t len)
 
-<b>Parameters:</b> 
-#1. The string to be filled. 
-#2. The character to fill.
-#3. The quantity of bytes to fill.
+<b>ft_memmov</b>
 
-<b>Return value:</b> First argument
+![memmov](imgs/memmov.png)
 
-<b>Description:</b> The memset() function writes <b>len bytes of value c</b> (converted to an unsigned char) to the string b.
+![memmov2](imgs/memmov2.png)
+
+<b>ft_calloc</b>
+
+![calloc](imgs/calloc.png)
+
+
+<h2>Part 2 - Additional Functions</h2>
+
+<b>ft_substr</b>
+
+![substr](imgs/substr.png)
+
+![substr2](imgs/substr2.png)
+
+<b>ft_strjoin</b>
+
+![strjoin](imgs/strjoin.png)
+
+![strjoin2](imgs/strjoin2.png)
+
+<b>ft_strtrim</b>
+
+![strtrim](imgs/strtrim.png)
+
+<b>ft_split</b>
+
+![split](imgs/split.png)
+
+![split1](imgs/split1.png)
+
+![split2](imgs/split2.png)
+
+<b>ft_itoa</b>
+
+![itoa](imgs/itoa.png)
+
+![itoa2](imgs/toa2.png)
+
+<b>ft_strmapi</b>
+
+![strmapi](imgs/strmapi.png)
+
+
+

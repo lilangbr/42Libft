@@ -8,23 +8,23 @@ Others are'nt in the C library but it will be so usefull further. This functions
 
 ## Use:
 
-### Build project functions:<br/>
+🚧 Build project functions:<br/>
 ```
 42Libft $ make
 ```
-### Build bonus (project functions + bonus):<br/>
+🚧 🚧 Build bonus (project functions + bonus):<br/>
 ```
 42Libft $ make bonus
 ```
-### Clean Obj files:<br/>
+🚿 Clean Obj files:<br/>
 ```
 42Libft $ make clean
 ```
-### Clean All (obj files + binary):<br/>
+🚿 🚿 Clean All (obj files + binary):<br/>
 ```
 42Libft $ make fclean
 ```
-### Clean All + build:<br/>
+🚿 🚧 Clean All + build:<br/>
 ```
 42Libft $ make re
 ```

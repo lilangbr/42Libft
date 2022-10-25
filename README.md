@@ -1,5 +1,8 @@
 # Libft42
 
+🔧 C, Makefile </br>
+🌍 MacOs, Linux
+
 The aim of this project is to code a C library regrouping usual functions that
 we’ll be allowed to use in all us other projects at 42.
 
